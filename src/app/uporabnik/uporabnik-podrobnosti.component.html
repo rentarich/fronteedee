@@ -1,0 +1,42 @@
+<div *ngIf="uporabnik">
+
+    <h3>Podrobnosti uporabnika {{uporabnik.username}}</h3>
+
+    <table>
+        <tr>
+            <td>Id:</td>
+            <td>{{uporabnik.id}}</td>
+        </tr>
+
+        <tr>
+            <td>Email ime:</td>
+            <td>{{uporabnik.email}}</td>
+        </tr>
+        <tr *ngIf="uporabnik.borrows">
+            <td valign="top">Izposojeni:</td>
+            <td class="seznam">
+                <li  *ngFor="let seznam of uporabnik.borrows">
+                    <span>{{seznam.item.title}}</span><br>
+                    <span>{{seznam.item.description}}</span><br>
+                    <span *ngIf="!seznam.returned">Vrni do:
+                    {{seznam.to_date}}
+                    </span>
+
+
+                </li>
+            </td>
+        </tr>
+    </table>
+
+    <!-- <br>
+    <h4>Opomniki:</h4>
+    <ul>
+        <li *ngFor="let opomnik of uporabnik.opomniki">
+            {{opomnik.naslov}}: {{opomnik.opis}}
+        </li>
+    </ul> -->
+
+    <br>
+    <button (click)="nazaj()">Nazaj</button>
+    <button (click)="dodajNakupovalniSeznam(uporabnik)">Dodaj seznam</button>
+</div>

@@ -1,0 +1,18 @@
+<h2>Dodaj nakupovalni seznam</h2>
+<div *ngIf="nakupovalniSeznam">
+    <form (ngSubmit)="submitForm()" ngNativeValidate>
+        <table>
+            <tr>
+                <td><label for="naziv">Naslov</label></td>
+                <td><input [(ngModel)]="nakupovalniSeznam.naziv" id="naziv" name="naziv" required/></td>
+            </tr>
+            <tr>
+                <td><label for="opis">Opis</label></td>
+                <td><input [(ngModel)]="nakupovalniSeznam.opis" id="opis" name="opis" required/></td>
+            </tr>
+        </table>
+
+        <button type="button" (click)="nazaj()">Nazaj</button>
+        <button type="submit">Dodaj</button>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+<h2>Nakupovalni seznami</h2>
+
+<ul class="seznam">
+    <li *ngFor="let nakupovalniSeznam of nakupovalniSeznami">
+        <span>{{nakupovalniSeznam.naziv}} {{nakupovalniSeznam.opis}}</span>
+        <button class="delete"
+                (click)="delete(nakupovalniSeznam); $event.stopPropagation()">x
+        </button>
+    </li>
+    <button (click)="dodajNakupovalniSeznam()">Dodaj nakupovalni seznam</button>
+</ul>
+

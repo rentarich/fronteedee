@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "http://20.62.179.11/catalog/v1/items",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

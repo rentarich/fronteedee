@@ -1,0 +1,13 @@
+<h2>Artikli</h2>
+
+<ul class="seznam">
+    <li *ngFor="let artikel of artikli">
+        <span>{{artikel.title}}</span><br>
+        <span>{{artikel.description}}</span>
+
+        <button class="delete"
+            (click)="izposodi(artikel)">Izposodi si artikel
+        </button>
+    </li>
+</ul>
+

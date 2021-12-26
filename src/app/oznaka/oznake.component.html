@@ -1,0 +1,12 @@
+<h2>Oznake</h2>
+
+<ul class="seznam">
+    <li *ngFor="let oznaka of oznake" (click)="naPodrobnosti(oznaka)">
+        <span>{{oznaka.naslov}} {{oznaka.opis}}</span>
+        <button class="delete"
+                (click)="delete(oznaka); $event.stopPropagation()">x
+        </button>
+    </li>
+    <button (click)="dodajOznako()">Dodaj oznako</button>
+</ul>
+

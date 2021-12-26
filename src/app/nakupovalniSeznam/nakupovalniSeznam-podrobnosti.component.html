@@ -1,0 +1,39 @@
+<div *ngIf="nakupovalniSeznam">
+
+    <h3>Podrobnosti nakupovalnega seznama {{nakupovalniSeznam.naziv}}</h3>
+
+    <table>
+        <tr>
+            <td>Id:</td>
+            <td>{{nakupovalniSeznam.id}}</td>
+        </tr>
+        <tr>
+            <td>Naziv:</td>
+            <td>{{nakupovalniSeznam.naziv}}</td>
+        </tr>
+        <tr>
+            <td>Opis:</td>
+            <td>{{nakupovalniSeznam.opis}}</td>
+        </tr>
+        <tr>
+            <td>Ustvarjen:</td>
+            <td>{{nakupovalniSeznam.ustvarjen}}</td>
+        </tr>
+        <tr *ngIf="nakupovalniSeznam.artikli">
+            <td valign="top">Artikli:</td>
+            <td class="seznam">
+                <li *ngFor="let artikel of nakupovalniSeznam.artikli">
+                   <span> {{artikel.naziv}} (id: {{artikel.id}})</span>
+                   <button class="delete"
+                        (click)="deleteArtikel(artikel); $event.stopPropagation()">x
+                    </button>
+                </li>
+            </td>
+        </tr>
+    </table>
+
+
+    <br>
+    <button (click)="nazaj(nakupovalniSeznam)">Nazaj</button>
+    <button (click)="dodajArtikel(nakupovalniSeznam)">Dodaj artikel</button>
+</div>
