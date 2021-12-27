@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Artikel} from './models/artikel';
 import {ArtikelService} from './services/artikel.service';
@@ -12,7 +12,7 @@ import {Uporabnik} from '../uporabnik/models/uporabnik';
 })
 export class ArtikliComponent implements OnInit {
     artikli: Artikel[];
-    artikel: Artikel;
+    artikel: Artikel=new Artikel();
 
     constructor(private artikelService: ArtikelService,
                 private router: Router) {
@@ -28,7 +28,10 @@ export class ArtikliComponent implements OnInit {
             .subscribe(artikli => this.artikli = artikli);
     }
 
+    submitForm(artikel: Artikel): void {
 
+        this.artikelService.dodajArtike(artikel);
+    }
 
     dodajArtikel(): void {
         this.router.navigate(['/dodajartikel']);
@@ -36,7 +39,30 @@ export class ArtikliComponent implements OnInit {
 
     izposodi(artikel: Artikel, uporabnikId: number) {
         this.artikelService
-            .izposodi(artikel.id,uporabnikId)
+            .izposodi(artikel.id,uporabnikId);
         // window.location.reload();
+    }
+
+    priljubljen(artikel: Artikel, uporabnikId: number) {
+        this.artikelService
+            .priljubljen(artikel.id,uporabnikId);
+        // window.location.reload();
+    }
+
+    izbrisi(artikel: Artikel) {
+        this.artikelService
+            .izbrisi(artikel.id);
+    }
+
+    posodobi(artikel: Artikel) {
+        let id=artikel.id+'';
+        let element=document.getElementById(id);
+        let title=element.getElementsByTagName('span')[0];
+        let description=element.getElementsByTagName('span')[1];
+        let category=element.getElementsByTagName('span')[2];
+        artikel.title=title.innerText;
+        artikel.category=category.innerText;
+        artikel.description=description.innerText
+        this.artikelService.posodobi(artikel);
     }
 }

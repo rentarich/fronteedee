@@ -1,13 +1,43 @@
 <h2>Artikli</h2>
 
+<form #dodajArtikel = "ngForm" (ngSubmit)="submitForm(dodajArtikel.value)" ngNativeValidate>
+    <table>
+        <tr>
+            <td><label for="title">Ime</label></td>
+            <td><input [(ngModel)]="artikel.title" id="title" name="title" required/></td>
+
+            <td><label for="description">Opis</label></td>
+            <td><input [(ngModel)]="artikel.description" id="description" name="description" required/></td>
+
+            <td><label for="category">Kategorija</label></td>
+            <td><input [(ngModel)]="artikel.category" id="category" name="category" required/></td>
+        </tr>
+    </table>
+
+    <!--<button type="button" (click)="nazaj()">Nazaj</button>-->
+    <button style="background-color: palegreen" type="submit">Dodaj</button>
+</form>
+
+
 <ul class="seznam">
     <li *ngFor="let artikel of artikli">
-        <span>{{artikel.title}}</span><br>
-        <span>{{artikel.description}}</span>
+        <div [id]="artikel.id">
+        <span contenteditable>{{artikel.title}}</span><br>
+        <span contenteditable>{{artikel.description}}</span><br>
+        <span contenteditable>{{artikel.category}}</span><br>
+        </div>
 
-        <button class="delete"
-            (click)="izposodi(artikel,1)">Izposodi si artikel
+        <button style="background-color: palegoldenrod" class="posodobi"
+                (click)="posodobi(artikel)">Posodobi
+        </button>
+        <button style="background-color: palevioletred" class="izbrisi"
+                (click)="izbrisi(artikel)">Izbriši
+        </button>
+        <button style="background-color: paleturquoise" class="izposodi"
+            (click)="izposodi(artikel,1)">Izposodi
+        </button>
+        <button style="background-color: paleturquoise" class="priljubljen"
+                (click)="priljubljen(artikel,1)">Priljubljen
         </button>
     </li>
 </ul>
-
