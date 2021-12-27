@@ -10,7 +10,7 @@ import { catchError } from 'rxjs/operators';
 export class ArtikelService {
 
     private headers = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Methods': '*'});
-    private url = 'http://localhost:5555/v1/items/available';
+    private url = 'http://20.62.179.11/catalog/v1/items/available';
     private url_izposoja = 'http://localhost:5556/v1/items/5/1/reserve'
 
     constructor(private http: HttpClient) {

@@ -25,6 +25,14 @@ h1 {
   height: auto;
   border-radius: 4px;
 }
+
+
+.navBardemoBasicUsage md-content .ext-content {
+  padding: 50px;
+  margin: 20px;
+  background-color: #FFF2E0; }
+
+
 .seznam li:hover {
   color: #607D8B;
   background-color: #DDD;
