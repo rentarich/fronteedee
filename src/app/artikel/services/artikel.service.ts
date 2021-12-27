@@ -5,29 +5,37 @@ import { Artikel } from '../models/artikel';
 import { Observable } from 'rxjs';
 
 import { catchError } from 'rxjs/operators';
+import {Izposoja} from '../../izposoja/models/izposoja';
 
 @Injectable()
 export class ArtikelService {
 
     private headers = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Methods': '*'});
-    private url = 'http://localhost:5555/v1/items/available';
-    private url_izposoja = 'http://localhost:5556/v1/items/5/1/reserve'
+    private url = 'http://20.62.179.11/catalog/v1/items';
+    private url_izposoja = 'http://20.62.179.11/borrow/v1/items/1/1/reserve';
 
     constructor(private http: HttpClient) {
     }
 
     getArtikli(): Observable<Artikel[]> {
-        return this.http.get<Artikel[]>(this.url)
+        const url = `${this.url}/available`
+        return this.http.get<Artikel[]>(url)
                         .pipe(catchError(this.handleError));
     }
 
-    izposodi(id: number): Observable<Artikel[]> {
-        console.log('here')
-        console.log(id)
+    izposodi(artikelId:number,uporabnikId: number): boolean {
+        console.log(artikelId +' ' +uporabnikId);
+        const url = `http://20.62.179.11/borrow/v1/items/${artikelId}/${uporabnikId}/reserve`;
 
-        return this.http.get<Artikel[]>(this.url)
-            .pipe(catchError(this.handleError));
-
+        try {
+            this.http.post<Izposoja>(url, {headers: this.headers}).subscribe(
+                data => console.log(data),
+                err => console.log(err),
+            );
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
 
     getArtikel(id: number): Observable<Artikel> {

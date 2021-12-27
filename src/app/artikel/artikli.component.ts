@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 
 import {Artikel} from './models/artikel';
 import {ArtikelService} from './services/artikel.service';
+import {Uporabnik} from '../uporabnik/models/uporabnik';
 
 @Component({
     moduleId: module.id,
@@ -33,9 +34,9 @@ export class ArtikliComponent implements OnInit {
         this.router.navigate(['/dodajartikel']);
     }
 
-    izposodi(artikel: Artikel) {
+    izposodi(artikel: Artikel, uporabnikId: number) {
         this.artikelService
-            .izposodi(artikel.id)
+            .izposodi(artikel.id,uporabnikId)
         // window.location.reload();
     }
 }
