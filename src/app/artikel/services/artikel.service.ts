@@ -11,6 +11,7 @@ import {Izposoja} from '../../izposoja/models/izposoja';
 export class ArtikelService {
 
     private headers = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Methods': '*'});
+
     private url = 'http://20.62.179.11/catalog/v1/items';
     private url_izposoja = 'http://20.62.179.11/borrow/v1/items/1/1/reserve';
 

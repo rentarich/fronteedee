@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-
+import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
@@ -44,7 +44,8 @@ import {NakupovalniSeznamService} from './nakupovalniSeznam/services/nakupovalni
         ArtikliDodajComponent,
         NakupovalniSeznamComponent,
         NakupovalniSeznamDodajComponent,
-        NakupovalniSeznamPodrobnostiComponent
+        NakupovalniSeznamPodrobnostiComponent,
+        NavigationBarComponent
     ],
     providers: [UporabnikService, OznakaService, ArtikelService, NakupovalniSeznamService],
     bootstrap: [AppComponent]
