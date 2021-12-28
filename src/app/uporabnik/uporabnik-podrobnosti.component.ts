@@ -60,4 +60,16 @@ export class UporabnikPodrobnostiComponent implements OnInit {
         this.uporabnikService
             .vrni(itemid, userid);
     }
+
+    posodobi(uporabnik: Uporabnik) {
+        let id = uporabnik.id + '';
+        let element= document.getElementById(id);
+        let upime = element.getElementsByTagName('span')[0].innerText;
+        console.log(upime)
+        let mail= element.getElementsByTagName('span')[1].innerText;
+        uporabnik.email = mail
+        uporabnik.username = upime
+        this.uporabnikService.posodobi(uporabnik);
+    }
+
 }

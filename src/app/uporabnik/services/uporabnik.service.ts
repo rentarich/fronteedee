@@ -101,5 +101,19 @@ export class UporabnikService {
             return false;
         }
     }
+
+    posodobi(uporabnik: Uporabnik) {
+        const url = `${this.url}/${uporabnik.id}`;
+        try {
+            this.http.put(url, JSON.stringify(uporabnik), {headers: this.headers}).subscribe(
+                data => console.log(data),
+                err => console.log(err),
+            );
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
 }
 

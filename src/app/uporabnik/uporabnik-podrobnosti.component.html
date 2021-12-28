@@ -1,10 +1,19 @@
 <div *ngIf="uporabnik">
     <h3>Podrobnosti uporabnika {{uporabnik.username}}</h3>
-    <table>
-        <tr>
-            <td>Email:</td>
-            <td>{{uporabnik.email}}</td>
-        </tr>
+
+        Posodobi podrobnosti uporabnika:
+        <div [id]="uporabnik.id">
+            <a>Uporabnisko ime: </a>
+            <span contenteditable>{{uporabnik.username}}</span><br>
+            <a>Email:</a>
+            <span contenteditable>{{uporabnik.email}}</span><br>
+        </div>
+    <button style="background-color: palegoldenrod" class="posodobi"
+            (click)="posodobi(uporabnik)">Posodobi
+    </button>
+
+<br>
+    <br>
         <tr *ngIf="uporabnik.borrows">
             <td valign="top">Zgodovina izposoj:</td>
             <td class="seznam">
@@ -22,7 +31,7 @@
                 </li>
             </td>
         </tr>
-    </table>
+
 
      <br>
     <h4>Priljubljeni predmeti:</h4>
