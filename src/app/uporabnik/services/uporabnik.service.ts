@@ -6,13 +6,16 @@ import { NakupovalniSeznam } from '../../nakupovalniSeznam/models/nakupovalniSez
 import { Observable } from 'rxjs';
 
 import { catchError } from 'rxjs/operators';
+import {Artikel} from '../../artikel/models/artikel';
 
 @Injectable()
 export class UporabnikService {
 
-    private headers = new HttpHeaders({'Content-Type': 'application/json'});
+    private headers = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Methods': '*'});
     private url = 'http://20.62.179.11/userprofile/v1/users/';
     private url2 = 'http://20.62.179.11/userprofile/v1/users/1/borrows';
+    private url_priljubljeni = 'http://20.62.179.11/favourites/v1/favourites/';
+    private url_odstrani = 'http://20.62.179.11/favourites/v1/favourites'
 
     constructor(private http: HttpClient) {
     }
@@ -48,6 +51,25 @@ export class UporabnikService {
     private handleError(error: any): Promise<any> {
         console.error('Prišlo je do napake', error);
         return Promise.reject(error.message || error);
+    }
+
+    getPriljubljeni(id: number) {
+        const url = `${this.url_priljubljeni}/${id}`;
+        return this.http.get<Artikel[]>(url)
+            .pipe(catchError(this.handleError));
+    }
+
+    priljubljen(id: number, uporabnikId: number) {
+        const url = `${this.url_odstrani}/${id}/${uporabnikId}`;
+        try {
+            this.http.delete(url, {headers: this.headers}).subscribe(
+                data => console.log(data),
+                err => console.log(err),
+            );
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
 }
 

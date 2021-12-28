@@ -1,19 +1,12 @@
 <div *ngIf="uporabnik">
-
     <h3>Podrobnosti uporabnika {{uporabnik.username}}</h3>
-
     <table>
         <tr>
-            <td>Id:</td>
-            <td>{{uporabnik.id}}</td>
-        </tr>
-
-        <tr>
-            <td>Email ime:</td>
+            <td>Email:</td>
             <td>{{uporabnik.email}}</td>
         </tr>
         <tr *ngIf="uporabnik.borrows">
-            <td valign="top">Izposojeni:</td>
+            <td valign="top">Zgodovina izposoj:</td>
             <td class="seznam">
                 <li  *ngFor="let seznam of uporabnik.borrows">
                     <span>{{seznam.item.title}}</span><br>
@@ -28,13 +21,18 @@
         </tr>
     </table>
 
-    <!-- <br>
-    <h4>Opomniki:</h4>
-    <ul>
-        <li *ngFor="let opomnik of uporabnik.opomniki">
-            {{opomnik.naslov}}: {{opomnik.opis}}
+     <br>
+    <h4>Priljubljeni predmeti:</h4>
+    <td class="seznam">
+        <li  *ngFor="let seznam of priljublljeni">
+            <span>{{seznam.title}}</span><br>
+            <span>{{seznam.description}}</span><br>
+
+            <button style="background-color: paleturquoise" class="priljubljen"
+                    (click)="priljubljen(seznam,uporabnik.id)">Odstrani iz priljubljenih
+            </button>
         </li>
-    </ul> -->
+    </td>
 
     <br>
     <button (click)="nazaj()">Nazaj</button>

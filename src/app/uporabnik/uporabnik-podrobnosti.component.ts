@@ -19,8 +19,8 @@ import {Artikel} from '../artikel/models/artikel';
 })
 export class UporabnikPodrobnostiComponent implements OnInit {
     uporabnik: Uporabnik;
-    nakupovalniSeznam: NakupovalniSeznam;
-    nakupovalniSeznami: NakupovalniSeznam[];
+    priljublljeni: Artikel[];
+
 
     constructor(private uporabnikService: UporabnikService,
                 private nakupovalniSeznamService: NakupovalniSeznamService,
@@ -33,6 +33,15 @@ export class UporabnikPodrobnostiComponent implements OnInit {
        this.route.params.pipe(
             switchMap((params: Params) => this.uporabnikService.getUporabnik(+params['id'])))
             .subscribe(uporabnik => this.uporabnik = uporabnik);
+       this.route.params.pipe(
+           switchMap((params: Params) => this.uporabnikService.getPriljubljeni(+params['id'])))
+               .subscribe(priljubljeni => this.priljublljeni = priljubljeni);
+    }
+
+    priljubljen(artikel: Artikel, uporabnikId: number) {
+        this.uporabnikService
+            .priljubljen(artikel.id, uporabnikId);
+        // window.location.reload();
     }
 
     nazaj(): void {
