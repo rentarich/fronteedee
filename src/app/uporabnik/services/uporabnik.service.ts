@@ -17,14 +17,18 @@ export class UporabnikService {
     private url_priljubljeni = 'http://20.62.179.11/favourites/v1/favourites/';
     private url_odstrani = 'http://20.62.179.11/favourites/v1/favourites'
     private  url_vrni = 'http://20.62.179.11/borrow/v1/items'
+    private url_reccomended = 'http://20.62.179.11/recommendation/v1/persons/'
 
     constructor(private http: HttpClient) {
     }
+
+
 
     getUporabniki(): Observable<Uporabnik[]> {
         return this.http.get<Uporabnik[]>(this.url)
                         .pipe(catchError(this.handleError));
     }
+
 
     getUporabnik(id: number): Observable<Uporabnik> {
         const url = `${this.url}/${id}`;
@@ -65,6 +69,12 @@ export class UporabnikService {
         return this.http.get<Artikel[]>(url)
             .pipe(catchError(this.handleError));
     }
+    getReccomended(id: number) {
+        const url = `${this.url_reccomended}/${id}/recommend`;
+        return this.http.get<Artikel[]>(url)
+        .pipe(catchError(this.handleError));
+    }
+
 
     priljubljen(id: number, uporabnikId: number) {
         const url = `${this.url_odstrani}/${id}/${uporabnikId}`;

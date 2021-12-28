@@ -24,6 +24,7 @@ import {NakupovalniSeznamComponent} from './nakupovalniSeznam/nakupovalniSeznami
 import {NakupovalniSeznamDodajComponent} from './nakupovalniSeznam/nakupovalniSeznam-dodaj.component';
 import {NakupovalniSeznamPodrobnostiComponent} from './nakupovalniSeznam/nakupovalniSeznam-podrobnosti.component';
 import {NakupovalniSeznamService} from './nakupovalniSeznam/services/nakupovalniSeznam.service';
+import {PrvaComponent} from './uporabnik/prva.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {NakupovalniSeznamService} from './nakupovalniSeznam/services/nakupovalni
         NakupovalniSeznamComponent,
         NakupovalniSeznamDodajComponent,
         NakupovalniSeznamPodrobnostiComponent,
-        NavigationBarComponent
+        NavigationBarComponent,
+        PrvaComponent
     ],
     providers: [UporabnikService, OznakaService, ArtikelService, NakupovalniSeznamService],
     bootstrap: [AppComponent]

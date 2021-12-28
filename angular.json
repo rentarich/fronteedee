@@ -131,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "odjemalec-prpo"
+  "defaultProject": "odjemalec-prpo",
+  "cli": {
+    "analytics": "60b7472b-0327-4a18-bb94-091fce285761"
+  }
 }

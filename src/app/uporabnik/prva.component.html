@@ -1,0 +1,18 @@
+<div>
+
+    <br>
+    <h4>Priporočeni predmeti:</h4>
+    <td class="seznam">
+        <li  *ngFor="let seznam of priporoceni">
+            <span>{{seznam.title}}</span><br>
+            <span>{{seznam.description}}</span><br>
+            <button style="background-color: paleturquoise" class="izposodi"
+                    (click)="izposodi(seznam,1)">Izposodi
+            </button>
+
+        </li>
+    </td>
+
+    <br>
+
+</div>

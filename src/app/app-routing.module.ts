@@ -14,10 +14,13 @@ import { ArtikliDodajComponent } from './artikel/artikli-dodaj.component';
 import { NakupovalniSeznamComponent } from './nakupovalniSeznam/nakupovalniSeznami.component';
 import { NakupovalniSeznamDodajComponent } from './nakupovalniSeznam/nakupovalniSeznam-dodaj.component';
 import { NakupovalniSeznamPodrobnostiComponent } from './nakupovalniSeznam/nakupovalniSeznam-podrobnosti.component';
+import {PrvaComponent} from './uporabnik/prva.component';
 
 const routes: Routes = [
-    {path: '', redirectTo: '/uporabniki', pathMatch: 'full'},
-    {path: 'uporabniki', component: UporabnikiComponent},
+    {path: '', redirectTo: '/rentarich/1', pathMatch: 'full'},
+    //{path: '', redirectTo: 'rentarich/1', component: PrvaComponent},
+    {path: 'rentarich/:id', component: PrvaComponent},
+
     {path: 'dodajuporabnika', component: UporabnikiDodajComponent},
     {path: 'uporabniki/:id', component: UporabnikPodrobnostiComponent},
     {path: 'uporabniki/:id/dodajnakupovalniSeznam', component: NakupovalniSeznamDodajComponent },
