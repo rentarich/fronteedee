@@ -11,6 +11,7 @@ import {UporabnikService} from './services/uporabnik.service';
 import {NakupovalniSeznam} from '../nakupovalniSeznam/models/nakupovalniSeznam';
 import {NakupovalniSeznamService} from '../nakupovalniSeznam/services/nakupovalniSeznam.service';
 import {Artikel} from '../artikel/models/artikel';
+import {Izposoja} from '../izposoja/models/izposoja';
 
 @Component({
     moduleId: module.id,
@@ -20,6 +21,7 @@ import {Artikel} from '../artikel/models/artikel';
 export class UporabnikPodrobnostiComponent implements OnInit {
     uporabnik: Uporabnik;
     priljublljeni: Artikel[];
+    izposojeni: Izposoja[];
 
 
     constructor(private uporabnikService: UporabnikService,
@@ -36,6 +38,9 @@ export class UporabnikPodrobnostiComponent implements OnInit {
        this.route.params.pipe(
            switchMap((params: Params) => this.uporabnikService.getPriljubljeni(+params['id'])))
                .subscribe(priljubljeni => this.priljublljeni = priljubljeni);
+        this.route.params.pipe(
+            switchMap((params: Params) => this.uporabnikService.getIzposojeni(+params['id'])))
+            .subscribe(izposojeni => this.izposojeni = izposojeni);
     }
 
     priljubljen(artikel: Artikel, uporabnikId: number) {

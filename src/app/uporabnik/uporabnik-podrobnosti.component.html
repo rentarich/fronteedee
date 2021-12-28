@@ -8,7 +8,7 @@
         <tr *ngIf="uporabnik.borrows">
             <td valign="top">Zgodovina izposoj:</td>
             <td class="seznam">
-                <li  *ngFor="let seznam of uporabnik.borrows">
+                <li  *ngFor="let seznam of izposojeni">
                     <span>{{seznam.item.title}}</span><br>
                     <span>{{seznam.item.description}}</span><br>
                     <span *ngIf="!seznam.returned">Vrni do:

@@ -60,6 +60,12 @@ export class UporabnikService {
             .pipe(catchError(this.handleError));
     }
 
+    getIzposojeni(id: number) {
+        const url = `${this.url}/${id}/borrows`;
+        return this.http.get<Artikel[]>(url)
+            .pipe(catchError(this.handleError));
+    }
+
     priljubljen(id: number, uporabnikId: number) {
         const url = `${this.url_odstrani}/${id}/${uporabnikId}`;
         try {
