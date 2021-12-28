@@ -49,18 +49,7 @@ export class UporabnikPodrobnostiComponent implements OnInit {
     }
 
 
-    dodajNakupovalniSeznam(uporabnik: Uporabnik): void {
-        this.router.navigate(['/uporabniki/'+uporabnik.id+'/dodajnakupovalniSeznam']);
-    }
 
-    deleteSeznam(nakupovalniSeznam: NakupovalniSeznam): void {
-        let id: number = Number(this.route.snapshot.paramMap.get('id'));
-        this.nakupovalniSeznamService
-            .deleteSeznam(id, nakupovalniSeznam.id)
-            .subscribe(seznamId => this.nakupovalniSeznami = this.nakupovalniSeznami.filter(u => u.id !== seznamId));
-        
-        window.location.reload();
-    }
 
     vrni(itemid: number, userid: number) {
         this.uporabnikService
