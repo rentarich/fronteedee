@@ -12,6 +12,7 @@ export class UporabnikService {
 
     private headers = new HttpHeaders({'Content-Type': 'application/json'});
     private url = 'http://20.62.179.11/userprofile/v1/users/';
+    private url2 = 'http://20.62.179.11/userprofile/v1/users/1/borrows';
 
     constructor(private http: HttpClient) {
     }
