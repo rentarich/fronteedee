@@ -61,4 +61,9 @@ export class UporabnikPodrobnostiComponent implements OnInit {
         
         window.location.reload();
     }
+
+    vrni(itemid: number, userid: number) {
+        this.uporabnikService
+            .vrni(itemid, userid);
+    }
 }

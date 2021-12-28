@@ -16,6 +16,7 @@ export class UporabnikService {
     private url2 = 'http://20.62.179.11/userprofile/v1/users/1/borrows';
     private url_priljubljeni = 'http://20.62.179.11/favourites/v1/favourites/';
     private url_odstrani = 'http://20.62.179.11/favourites/v1/favourites'
+    private  url_vrni = 'http://20.62.179.11/borrow/v1/items'
 
     constructor(private http: HttpClient) {
     }
@@ -63,6 +64,19 @@ export class UporabnikService {
         const url = `${this.url_odstrani}/${id}/${uporabnikId}`;
         try {
             this.http.delete(url, {headers: this.headers}).subscribe(
+                data => console.log(data),
+                err => console.log(err),
+            );
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    vrni(itemid: number, userid: number) {
+        const url = `${this.url_vrni}/${itemid}/${userid}/return`;
+        try {
+            this.http.put(url, {headers: this.headers}).subscribe(
                 data => console.log(data),
                 err => console.log(err),
             );
