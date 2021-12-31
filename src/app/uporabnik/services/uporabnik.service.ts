@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 import { catchError } from 'rxjs/operators';
 import {Artikel} from '../../artikel/models/artikel';
+import {Izposoja} from '../../izposoja/models/izposoja';
 
 @Injectable()
 export class UporabnikService {
@@ -35,7 +36,7 @@ export class UporabnikService {
         return this.http.get<Uporabnik>(url)
                         .pipe(catchError(this.handleError));
     }
-
+ 
     delete(id: number): Observable<number> {
         const url = `${this.url}/${id}`;
         return this.http.delete<number>(url, {headers: this.headers})
@@ -66,7 +67,7 @@ export class UporabnikService {
 
     getIzposojeni(id: number) {
         const url = `${this.url}/${id}/borrows`;
-        return this.http.get<Artikel[]>(url)
+        return this.http.get<Izposoja[]>(url)
             .pipe(catchError(this.handleError));
     }
     getReccomended(id: number) {

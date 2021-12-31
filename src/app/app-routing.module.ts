@@ -21,19 +21,19 @@ const routes: Routes = [
     //{path: '', redirectTo: 'rentarich/1', component: PrvaComponent},
     {path: 'rentarich/:id', component: PrvaComponent},
 
-    {path: 'dodajuporabnika', component: UporabnikiDodajComponent},
+    //{path: 'dodajuporabnika', component: UporabnikiDodajComponent},
     {path: 'uporabniki/:id', component: UporabnikPodrobnostiComponent},
-    {path: 'uporabniki/:id/dodajnakupovalniSeznam', component: NakupovalniSeznamDodajComponent },
+    //{path: 'uporabniki/:id/dodajnakupovalniSeznam', component: NakupovalniSeznamDodajComponent },
 
-    {path: 'oznake', component: OznakeComponent},
-    {path: 'dodajoznako', component: OznakeDodajComponent},
+    //{path: 'oznake', component: OznakeComponent},
+    //{path: 'dodajoznako', component: OznakeDodajComponent},
 
     {path: 'artikli', component: ArtikliComponent},
     //{path: 'dodajartikel', component: ArtikliDodajComponent},
 
-    {path: 'nakupovalniSeznami', component: NakupovalniSeznamComponent},
-    {path: 'nakupovalniSeznami/:id', component: NakupovalniSeznamPodrobnostiComponent },
-    {path: 'nakupovalniSeznami/:id/dodajartikel', component: ArtikliDodajComponent }
+    //{path: 'nakupovalniSeznami', component: NakupovalniSeznamComponent},
+    //{path: 'nakupovalniSeznami/:id', component: NakupovalniSeznamPodrobnostiComponent },
+    //{path: 'nakupovalniSeznami/:id/dodajartikel', component: ArtikliDodajComponent }
 ];
 
 @NgModule({

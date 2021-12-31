@@ -19,13 +19,14 @@ export class ArtikelService {
     }
 
     getArtikli(): Observable<Artikel[]> {
-        const url = `${this.url}/available`;
+        const url = `${this.url}`;
         return this.http.get<Artikel[]>(url)
                         .pipe(catchError(this.handleError));
     }
 
     izposodi(artikelId:number,uporabnikId: number): boolean {
         const url = `http://20.62.179.11/borrow/v1/items/${artikelId}/${uporabnikId}/reserve`;
+        console.log(artikelId,uporabnikId);
 
         try {
             this.http.post<Izposoja>(url, {headers: this.headers}).subscribe(
