@@ -17,7 +17,7 @@ export class UporabnikService {
     private url_priljubljeni = 'http://20.62.179.11/favourites/v1/favourites/';
     private url_odstrani = 'http://20.62.179.11/favourites/v1/favourites'
     private  url_vrni = 'http://20.62.179.11/borrow/v1/items'
-    private url_reccomended = 'http://20.62.179.11/recommendation/v1/persons/'
+    private url_reccomended = 'http://20.62.179.11/catalog/v1/items/person/'
 
     constructor(private http: HttpClient) {
     }
@@ -70,7 +70,7 @@ export class UporabnikService {
             .pipe(catchError(this.handleError));
     }
     getReccomended(id: number) {
-        const url = `${this.url_reccomended}/${id}/recommend`;
+        const url = `${this.url_reccomended}/${id}`;
         return this.http.get<Artikel[]>(url)
         .pipe(catchError(this.handleError));
     }
