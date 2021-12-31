@@ -36,7 +36,7 @@ export class UporabnikService {
         return this.http.get<Uporabnik>(url)
                         .pipe(catchError(this.handleError));
     }
-
+ 
     delete(id: number): Observable<number> {
         const url = `${this.url}/${id}`;
         return this.http.delete<number>(url, {headers: this.headers})
