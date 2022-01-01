@@ -16,7 +16,7 @@ export class NakupovalniSeznamComponent implements OnInit {
     constructor(private nakupovalniSeznamService: NakupovalniSeznamService,
                 private router: Router) {
     }
-
+ 
     ngOnInit(): void {
         this.getNakupovalneSezname();
     }
